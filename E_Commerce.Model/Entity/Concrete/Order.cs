@@ -4,7 +4,7 @@ using System.Text;
 
 namespace E_Commerce.Model.Entity.Concrete
 {
-    class Order
+    public class Order
     {
     }
 }
