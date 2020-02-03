@@ -2,7 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using E_Commerce.Bll.Abstraction;
+using E_Commerce.Bll.Concrete;
+using E_Commerce.DAL.Entity.Abstraction;
 using E_Commerce.DAL.Entity.Concrete.EfCore.Context;
+using E_Commerce.DAL.Entity.Concrete.Memory;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +28,11 @@ namespace E_Commerce.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IProductDal, MemoryProductDal>();
+            services.AddScoped<IProductService, ProductManager>();
+            services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
+            services.AddMvc(option => option.EnableEndpointRouting = false);
+
             services.AddControllersWithViews();
             services.AddDbContext<ProjectContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }

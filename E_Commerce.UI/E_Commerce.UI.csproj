@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\E_Commerce.Bll\E_Commerce.Bll.csproj" />
     <ProjectReference Include="..\E_Commerce.DAL\E_Commerce.DAL.csproj" />
   </ItemGroup>
 
